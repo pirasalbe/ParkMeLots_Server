@@ -1,0 +1,6 @@
+c:\users\manuel\documents\visual studio 2015\Projects\ServerGarage\ServerGarage\bin\Debug\ServerGarage.exe.config
+c:\users\manuel\documents\visual studio 2015\Projects\ServerGarage\ServerGarage\bin\Debug\ServerGarage.exe
+c:\users\manuel\documents\visual studio 2015\Projects\ServerGarage\ServerGarage\bin\Debug\ServerGarage.pdb
+c:\users\manuel\documents\visual studio 2015\Projects\ServerGarage\ServerGarage\obj\Debug\ServerGarage.csprojResolveAssemblyReference.cache
+c:\users\manuel\documents\visual studio 2015\Projects\ServerGarage\ServerGarage\obj\Debug\ServerGarage.exe
+c:\users\manuel\documents\visual studio 2015\Projects\ServerGarage\ServerGarage\obj\Debug\ServerGarage.pdb
