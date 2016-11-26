@@ -171,10 +171,10 @@ namespace ServerGarage
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("ERR:" + e.Message +" con key=" +key);
+                        Console.WriteLine("ERR: " + e.Message +" con key=" +key);
                         
                         if(!(e as SocketException!=null))
-                             CServer.Instance.SendData(Sck, ASCIIEncoding.ASCII.GetBytes("ERR:" + e.Message));
+                             CServer.Instance.SendData(Sck, ASCIIEncoding.ASCII.GetBytes("ERR: " + e.Message));
                         Sck.Close();
                         Sck.Dispose();
                         close = true;
