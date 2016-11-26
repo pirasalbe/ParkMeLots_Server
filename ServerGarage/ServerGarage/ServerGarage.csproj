@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CCounter.cs" />
+    <Compile Include="CDatabase.cs" />
     <Compile Include="CIO.cs" />
     <Compile Include="CServer.cs" />
     <Compile Include="Program.cs" />

@@ -72,7 +72,7 @@ namespace ServerGarage
             bool IncomingConnection = false;
             Thread ConnectionManager;
             if (DEBUG)
-                CIO.DebugOut("Start attending connection...");
+                CIO.DebugOut("Start waiting connection...");
             while (!IsStopped)
             {
                 IncomingConnection = false;
@@ -80,7 +80,7 @@ namespace ServerGarage
                 asyncConnection.Completed += (object sender, SocketAsyncEventArgs e) => { IncomingConnection = true; };
                 mListener.AcceptAsync(asyncConnection);
                 if (DEBUG)
-                    CIO.DebugOut("Attending connection...");
+                    CIO.DebugOut("Waiting connection...");
                 while (!IncomingConnection && !IsStopped)
                 {
                     Thread.Sleep(1000);
@@ -115,7 +115,7 @@ namespace ServerGarage
             }
             catch
             {
-                return "Errror.";
+                return "Error.";
             }
         }
 
@@ -132,6 +132,11 @@ namespace ServerGarage
         {
             Dispatcher.Send(BitConverter.GetBytes(data.Length));
             Dispatcher.Send(data);
+        }
+
+        public bool Auth(Socket Sck)
+        {
+            return true;
         }
     }
 }

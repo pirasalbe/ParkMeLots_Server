@@ -4,3 +4,9 @@ c:\users\manuel\documents\visual studio 2015\Projects\ServerGarage\ServerGarage\
 c:\users\manuel\documents\visual studio 2015\Projects\ServerGarage\ServerGarage\obj\Debug\ServerGarage.csprojResolveAssemblyReference.cache
 c:\users\manuel\documents\visual studio 2015\Projects\ServerGarage\ServerGarage\obj\Debug\ServerGarage.exe
 c:\users\manuel\documents\visual studio 2015\Projects\ServerGarage\ServerGarage\obj\Debug\ServerGarage.pdb
+C:\Users\Andrea\Desktop\SignTheWay_Server\ServerGarage\ServerGarage\bin\Debug\ServerGarage.exe.config
+C:\Users\Andrea\Desktop\SignTheWay_Server\ServerGarage\ServerGarage\obj\Debug\ServerGarage.exe
+C:\Users\Andrea\Desktop\SignTheWay_Server\ServerGarage\ServerGarage\obj\Debug\ServerGarage.pdb
+C:\Users\Andrea\Desktop\SignTheWay_Server\ServerGarage\ServerGarage\obj\Debug\ServerGarage.csprojResolveAssemblyReference.cache
+C:\Users\Andrea\Desktop\SignTheWay_Server\ServerGarage\ServerGarage\bin\Debug\ServerGarage.exe
+C:\Users\Andrea\Desktop\SignTheWay_Server\ServerGarage\ServerGarage\bin\Debug\ServerGarage.pdb
