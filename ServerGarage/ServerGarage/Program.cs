@@ -74,22 +74,35 @@ namespace ServerGarage
                 Sck.Dispose();
                 close = true;
             }
-            /*
+
             if (userType == "NormalUser")
+            {
+                string dati="";
+                string[] signDB;
+                double longitude1, latitude1,longitude2,latitude2;
+                bool side = false;
                 while (!close)
                     try
                     {
-                        data = CServer.Instance.ReceiveData(Sck);
-                        req = ASCIIEncoding.ASCII.GetString(data);
+                        req = ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck));
                         switch (req)
                         {
-                            case "RQST_RGG":
-                                via= ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck));
-                                //pos= ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck));
-                                req=CDatabase.Instance.Request(via);
-
+                            case "NRB_SGN":
+                                latitude1 = Convert.ToDouble(ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck)).Replace(',','.'));
+                                longitude1= Convert.ToDouble(ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck)).Replace(',', '.'));
+                                latitude2 = Convert.ToDouble(ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck)).Replace(',', '.'));
+                                longitude2 = Convert.ToDouble(ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck)).Replace(',', '.'));
+                                /*if (latitude1 - latitude2 <= 0)
+                                    if (longitude1 - longitude2 <= 0)
+                                        side = true;    //se 2>1
+                                    else(longitude1 - longitude2 >=0)
+                                    */
+                                signDB =CDatabase.Instance.ReturnAll();
+                                for (int i = 0; i < signDB.Length; i++)
+                                    dati += signDB[i];
+                                CServer.Instance.SendData(Sck,ASCIIEncoding.ASCII.GetBytes( dati));
                                 break;
-                                
+
 
                             case "ALV":
                                 break;
@@ -108,6 +121,8 @@ namespace ServerGarage
                         Sck.Dispose();
                         close = true;
                     }
+            }
+            /*
             else if (userType == "AdminUser")
                 while (!close)
                     try
@@ -140,7 +155,7 @@ namespace ServerGarage
                     }
 
             */
-            if(userType== "Signal")
+            if (userType== "Signal")
             {
                 c++;
                 string[] allData;
@@ -159,7 +174,7 @@ namespace ServerGarage
                     {
                         
                         req = ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck));
-                        Console.WriteLine("UPD Received.");
+                        Console.WriteLine("UPT Received.");
                         switch (req)
                         {
                             case "UPT":

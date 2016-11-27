@@ -67,9 +67,10 @@ namespace ServerGarage
         {
             lock (db)
             {
-                var result = db.Signals.SingleOrDefault(b => b.Id == key);
+                Sign result=db.Signals.Where(s => s.Id == key).FirstOrDefault<Sign>();
                 if (result != null)
                 {
+                    Console.WriteLine("Aggiornamento record database.");
                     result.Id = key;
                     result.SignCode = codSign;
                     result.Begin = dataCreazione;
@@ -78,10 +79,34 @@ namespace ServerGarage
                     result.Latitude = latitudine;
                     result.Direction = side;
                 }
-                Sign newSign = new Sign() { Id = key, SignCode = codSign, Begin = dataCreazione, End = dataFine, };
-                db.Signals.Add(newSign);
+                else {
+
+                    Console.WriteLine("Aggiunta di un record al database.");
+                    Sign newSign = new Sign() { Id = key, SignCode = codSign, Begin = dataCreazione, End = dataFine, };
+                    db.Signals.Add(newSign);
+                }
                 db.SaveChanges();
             }
+        }
+
+        public string[] ReturnAll()
+        {
+            string[] ris;
+            var allRecord = db.Signals.Select(Signal => new
+            {
+                Id = Signal.Id,
+                codSign = Signal.SignCode,
+                dataCreazione = Signal.Begin,
+                dataFine = Signal.End,
+                longitude = Signal.Longitude,
+                latitudine = Signal.Latitude,
+                side = Signal.Direction
+            });
+            ris = new string[allRecord.Count()];
+            int c = 0;
+            foreach (var s in allRecord)
+                ris[c++] = s.Id + ":" + s.codSign + ":" + s.longitude + ":" + s.latitudine + ":" + s.side +";" ;
+            return ris;
         }
     }
 
