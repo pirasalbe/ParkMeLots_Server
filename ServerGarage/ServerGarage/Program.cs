@@ -79,6 +79,7 @@ namespace ServerGarage
             {
                 string dati="";
                 string[] signDB;
+                string tmp;
                 double longitude1, latitude1,longitude2,latitude2;
                 bool side = false;
                 while (!close)
@@ -88,18 +89,21 @@ namespace ServerGarage
                         switch (req)
                         {
                             case "NRB_SGN":
-                                latitude1 = Convert.ToDouble(ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck)).Replace(',','.'));
-                                longitude1= Convert.ToDouble(ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck)).Replace(',', '.'));
-                                latitude2 = Convert.ToDouble(ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck)).Replace(',', '.'));
-                                longitude2 = Convert.ToDouble(ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck)).Replace(',', '.'));
-                                /*if (latitude1 - latitude2 <= 0)
-                                    if (longitude1 - longitude2 <= 0)
-                                        side = true;    //se 2>1
-                                    else(longitude1 - longitude2 >=0)
-                                    */
+                                tmp = ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck)).Replace('.', ',');
+                                latitude1 = Convert.ToDouble(tmp);
+                                tmp = ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck)).Replace('.', ',');
+                                longitude1 = Convert.ToDouble(tmp);
+                                tmp = ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck)).Replace('.', ',');
+                                latitude2 = Convert.ToDouble(tmp);
+                                tmp = ASCIIEncoding.ASCII.GetString(CServer.Instance.ReceiveData(Sck)).Replace('.', ',');
+                                longitude2 = Convert.ToDouble(tmp);
+
+                                 
                                 signDB =CDatabase.Instance.ReturnAll();
                                 for (int i = 0; i < signDB.Length; i++)
                                     dati += signDB[i];
+                                Console.WriteLine(("Send: " + dati).Replace(',', '.'));
+                                //dati= 3 + ":" + 40 + ":" + 0 + ":" + 0 + ":" + 0 + ";"+ 4 + ":" + 41 + ":" + 0 + ":" + 0 + ":" + 0 + ";";
                                 CServer.Instance.SendData(Sck,ASCIIEncoding.ASCII.GetBytes( dati));
                                 break;
 
@@ -182,8 +186,8 @@ namespace ServerGarage
                                 codSign = Convert.ToInt32(allData[1]);
                                 dataCreazione = Convert.ToInt64(allData[2]);
                                 dataFine = Convert.ToInt64(allData[3]);
-                                allData[4]=allData[4].Replace(',', '.');
-                                allData[5] = allData[5].Replace(',', '.');
+                                allData[4]=allData[4].Replace('.', ',');
+                                allData[5] = allData[5].Replace('.', ',');
                                 longitudine = Convert.ToDouble(allData[4]);
                                 latitudine = Convert.ToDouble(allData[5]);
                                 rightSide = Convert.ToInt16(allData[6]);
